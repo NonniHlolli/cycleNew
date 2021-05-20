@@ -32,12 +32,12 @@ class Logger():
         self.prev_time = time.time()
 
         sys.stdout.write('\rEpoch %03d/%03d [%04d/%04d] -- ' % (self.epoch, self.n_epochs, self.batch, self.batches_epoch))
-
-        for i, loss_name in enumerate(losses.keys()):
-            if loss_name not in self.losses:
-                self.losses[loss_name] = losses[loss_name].data[0]
-            else:
-                self.losses[loss_name] += losses[loss_name].data[0]
+        print(self.batch)
+        if self.batch == 1:
+          self.losses = losses
+        else:
+          for i, loss_name in enumerate(losses.keys()):
+            self.losses[loss_name] += losses[loss_name]
 
             if (i+1) == len(losses.keys()):
                 sys.stdout.write('%s: %.4f -- ' % (loss_name, self.losses[loss_name]/self.batch))
