@@ -49,7 +49,7 @@ class Logger():
         sys.stdout.write('ETA: %s' % (datetime.timedelta(seconds=batches_left*self.mean_period/batches_done)))
 
         # Draw images
-        if self.epoch%100 == 1:
+        if self.batch%100 == 1:
             for image_name, tensor in images.items():
                 if image_name not in self.image_windows:
                     self.image_windows[image_name] = self.viz.image(tensor2image(tensor.data), opts={'title':image_name})
