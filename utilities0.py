@@ -47,7 +47,7 @@ class Logger():
                                                                     opts={'xlabel': 'epochs', 'ylabel': loss_name, 'title': loss_name})
                 else:
                     self.viz.line(X=np.array([self.epoch]), Y=np.array([loss/self.batch]), win=self.loss_windows[loss_name], update='append')
-                 Reset losses for next epoch
+                #Reset losses for next epoch
                 self.losses[loss_name] = 0.0
 
             self.epoch += 1
