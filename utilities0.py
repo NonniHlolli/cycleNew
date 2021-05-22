@@ -4,6 +4,7 @@ import datetime
 import sys
 from torch.autograd import Variable
 import torch
+from visdom import Visdom
 import numpy as np
 
 def tensor2image(tensor):
@@ -14,6 +15,7 @@ def tensor2image(tensor):
 
 class Logger():
     def __init__(self, n_epochs, batches_epoch):
+        self.viz = Visdom(port='8097')
         self.n_epochs = n_epochs
         self.batches_epoch = batches_epoch
         self.epoch = 1
@@ -21,6 +23,7 @@ class Logger():
         self.prev_time = time.time()
         self.mean_period = 0
         self.losses = {}
+        self.loss_windows = {}
 
 
     def log(self, losses=None, images=None):
