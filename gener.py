@@ -2,8 +2,10 @@ import torch.nn as nn
 from residBlock import *
 
 class Generator(nn.Module):
-    def __init__(self, input_channels, output_channels):
+    def __init__(self):
         super(Generator, self).__init__()
+        input_channels = 3
+        output_channels = 3
 
         # First convolution
         generator = [   nn.ReflectionPad2d(3),

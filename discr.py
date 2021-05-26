@@ -2,8 +2,9 @@ import torch.nn as nn
 import torch.nn.functional as func
 
 class Discriminator(nn.Module):
-    def __init__(self, input_channels):
+    def __init__(self):
         super(Discriminator, self).__init__()
+        input_channels = 3
 
         # 3 convolution layers
         # Instance normalizations
